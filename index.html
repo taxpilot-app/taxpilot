@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxPilot</title>
+    <style>
+    body {
+    background: #111827;
+}
+body {
+    color: #f9fafb;
+}
+.container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #1f2937;
+    border-radius: 16px;
+}
+select,
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    background: #374151;
+    color: #f9fafb;
+    font-size: 16px;
+}
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+<h1>TaxPilot</h1>
+
+<p>Your business. Your taxes. One simple place.</p>
+
+<button onclick="showForm()">Get started</button>
+
+<div id="form" style="display: none;">
+    <h2>Tell us about your business</h2>
+
+    <label>What type of business do you have?</label>
+    <select id="businessType">
+        <option>LLC</option>
+        <option>Sole Proprietorship</option>
+        <option>Corporation</option>
+        <option>Partnership</option>
+    </select>
+
+    <br><br>
+
+    <label>Which state is your business in?</label>
+    <select id="state">
+        <option>Texas</option>
+        <option>California</option>
+        <option>Florida</option>
+        <option>New York</option>
+    </select>
+
+    <br><br>
+
+    <label>How many employees do you have?</label>
+    <input id="employees" type="number" placeholder="Example: 2">
+
+    <br><br>
+
+    <label>What is your annual revenue?</label>
+    <input id="revenue" type="number" placeholder="Example: 250000">
+    <br><br>
+
+<button type="button" onclick="continueForm()">Continue</button>
+
+</div>
+
+<script>
+    function showForm() {
+        document.getElementById("form").style.display = "block";
+    }
+    function continueForm() {
+        const businessType = document.getElementById("businessType").value;
+const state = document.getElementById("state").value;
+const employees = document.getElementById("employees").value;
+const revenue = document.getElementById("revenue").value;
+alert(
+    "Your TaxPilot profile:\n\n" +
+    "Business: " + businessType + "\n" +
+    "State: " + state + "\n" +
+    "Employees: " + employees + "\n" +
+    "Annual revenue: $" + revenue
+);
+}
+  
+</script>
+
+</div>
+
+</body>
+</html>
