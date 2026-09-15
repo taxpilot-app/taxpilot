@@ -54,6 +54,7 @@ button:hover {
 <button onclick="showForm()">Get started</button>
 
 <div id="form" style="display: none;">
+    
     <h2>Tell us about your business</h2>
 
     <label>What type of business do you have?</label>
@@ -86,7 +87,7 @@ button:hover {
     <br><br>
 
 <button type="button" onclick="continueForm()">Continue</button>
-
+<div id="result"></div>
 </div>
 
 <script>
@@ -98,13 +99,36 @@ button:hover {
 const state = document.getElementById("state").value;
 const employees = document.getElementById("employees").value;
 const revenue = document.getElementById("revenue").value;
-alert(
-    "Your TaxPilot profile:\n\n" +
-    "Business: " + businessType + "\n" +
-    "State: " + state + "\n" +
-    "Employees: " + employees + "\n" +
-    "Annual revenue: $" + revenue
-);
+let employeeRequirement = "";
+
+if (Number(employees) > 0) {
+    employeeRequirement = "Employer and payroll requirements";
+} else {
+    employeeRequirement = "No employees reported";
+}
+let stateRequirement = "";
+
+if (state === "Texas") {
+    stateRequirement = "Texas state tax obligations";
+} else {
+    stateRequirement = "State-specific tax obligations";
+}
+document.getElementById("result").innerHTML =
+    "<h2>Your TaxPilot profile</h2>" +
+    "<p><strong>Business type</strong><br>" + businessType + "</p>" +
+    "<p><strong>State</strong><br>" + state + "</p>" +
+    "<p><strong>Employees</strong><br>" + employees + "</p>" +
+    "<p><strong>Annual revenue</strong><br>$" + revenue + "</p>" +
+"<h2>Compliance overview</h2>" +
+"<p>Based on your business profile:</p>" +
+"<p><strong>3 potential compliance areas identified.</strong></p>" +
+"<p>TaxPilot is preparing your personalized compliance requirements.</p>" +
+"<ul>" +
+"<li>Federal tax obligations</li>" +
+"<li>" + stateRequirement + "</li>" +
+"<li>" + employeeRequirement + "</li>" +
+"<li>Required reports and filings</li>" +
+"</ul>"
 }
   
 </script>
